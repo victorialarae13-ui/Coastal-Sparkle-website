@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Reviews – Coastal Sparkle</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--navy:#1a2744;--orange:#e07b2a;--peach:#f2b8a0;--blush:#f5d6cc;--lavender:#e8e4f0;--sage:#a8b89a;--cream:#fdf8f5;--soft-white:#fefcfa;}
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:'Jost',sans-serif;background:var(--soft-white);color:var(--navy);}
+    nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(253,248,245,0.95);backdrop-filter:blur(10px);padding:14px 32px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(240,210,195,0.4);}
+    .nav-brand{font-family:'Great Vibes',cursive;font-size:1.8rem;color:var(--navy);text-decoration:none;}
+    .nav-links{display:flex;gap:20px;list-style:none;align-items:center;}
+    .nav-links a{text-decoration:none;font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--navy);opacity:0.7;transition:all 0.2s;}
+    .nav-links a:hover,.nav-links a.active{opacity:1;color:var(--orange);}
+    .nav-book{background:var(--navy);color:white!important;opacity:1!important;padding:9px 22px;border-radius:50px;font-size:0.78rem!important;}
+    .nav-book:hover{background:var(--orange)!important;}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+    .hamburger span{display:block;width:24px;height:2px;background:var(--navy);border-radius:2px;}
+    .mobile-menu{display:none;position:fixed;top:58px;left:0;right:0;z-index:99;background:rgba(253,248,245,0.98);backdrop-filter:blur(10px);padding:20px 32px;flex-direction:column;gap:0;border-bottom:1px solid rgba(240,210,195,0.4);}
+    .mobile-menu.open{display:flex;}
+    .mobile-menu a{text-decoration:none;font-size:0.9rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--navy);opacity:0.8;padding:14px 0;border-bottom:1px solid rgba(240,210,195,0.3);}
+    .mobile-menu a:last-child{border-bottom:none;}
+    .mobile-book{background:var(--orange);color:white!important;opacity:1!important;text-align:center;border-radius:50px;padding:14px 28px!important;margin-top:12px;}
+    @media(max-width:700px){.nav-links{display:none;}.hamburger{display:flex;}}
+
+    .page-hero{padding:140px 24px 60px;background:linear-gradient(160deg,var(--lavender) 0%,var(--blush) 60%,var(--cream) 100%);text-align:center;}
+    .page-label{font-size:0.72rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--orange);margin-bottom:12px;}
+    .page-title{font-family:'Great Vibes',cursive;font-size:clamp(3rem,7vw,5rem);color:var(--navy);margin-bottom:14px;}
+    .page-desc{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--navy);opacity:0.72;max-width:520px;margin:0 auto;line-height:1.75;}
+
+    .reviews-section{padding:80px 24px;background:var(--cream);}
+    .reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;max-width:1000px;margin:0 auto;}
+    .review-card{background:white;border-radius:20px;padding:32px 28px;border:1px solid rgba(240,200,185,0.35);box-shadow:0 4px 20px rgba(26,39,68,0.06);transition:transform 0.3s,box-shadow 0.3s;}
+    .review-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(26,39,68,0.1);}
+    .review-stars{color:var(--orange);font-size:1.2rem;margin-bottom:16px;letter-spacing:2px;}
+    .review-text{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.1rem;line-height:1.8;color:var(--navy);opacity:0.85;margin-bottom:20px;}
+    .review-author{font-size:0.85rem;font-weight:500;color:var(--navy);}
+    .review-location{font-size:0.75rem;color:var(--navy);opacity:0.5;margin-top:4px;}
+
+    .rating-summary{text-align:center;margin-bottom:56px;}
+    .big-stars{font-size:2.5rem;color:var(--orange);letter-spacing:4px;margin-bottom:8px;}
+    .rating-text{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--navy);opacity:0.7;}
+
+    .book-cta{padding:70px 24px;background:linear-gradient(135deg,var(--blush),var(--lavender));text-align:center;}
+    .section-label{font-size:0.72rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--orange);margin-bottom:12px;}
+    .section-title{font-family:'Great Vibes',cursive;font-size:clamp(2.5rem,5vw,3.8rem);color:var(--navy);margin-bottom:20px;}
+    .booking-btn{display:inline-block;background:var(--orange);color:white;text-decoration:none;font-size:0.85rem;letter-spacing:0.15em;text-transform:uppercase;padding:18px 52px;border-radius:50px;transition:all 0.3s;box-shadow:0 6px 24px rgba(224,123,42,0.3);}
+    .booking-btn:hover{background:var(--navy);transform:translateY(-3px);}
+
+    footer{background:var(--navy);color:white;text-align:center;padding:40px 24px;}
+    .footer-brand{font-family:'Great Vibes',cursive;font-size:2.5rem;color:var(--peach);margin-bottom:10px;}
+    .footer-tagline{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;opacity:0.6;margin-bottom:16px;}
+    .footer-links{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-bottom:16px;}
+    .footer-links a{color:white;opacity:0.5;text-decoration:none;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;transition:opacity 0.2s;}
+    .footer-links a:hover{opacity:1;}
+    .footer-license{font-size:0.73rem;letter-spacing:0.08em;opacity:0.35;}
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="nav-brand">Coastal Sparkle</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      
+      <li><a href="reviews.html" class="active">Reviews</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="https://calendly.com/centralcoast-csc" target="_blank" class="nav-book">Book Now ✨</a></li>
+    </ul>
+    <button class="hamburger" onclick="document.getElementById('mob').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mob">
+    <a href="index.html" onclick="document.getElementById('mob').classList.remove('open')">Home</a>
+    <a href="services.html" onclick="document.getElementById('mob').classList.remove('open')">Services</a>
+    
+    <a href="reviews.html" onclick="document.getElementById('mob').classList.remove('open')">Reviews</a>
+    <a href="contact.html" onclick="document.getElementById('mob').classList.remove('open')">Contact</a>
+    <a href="https://calendly.com/centralcoast-csc" target="_blank" class="mobile-book">Book Now ✨</a>
+  </div>
+
+  <div class="page-hero">
+    <p class="page-label">What Our Clients Say</p>
+    <h1 class="page-title">Reviews</h1>
+    <p class="page-desc">Real words from real happy customers across the Central Coast. ✨</p>
+  </div>
+
+  <section class="reviews-section">
+    <div class="rating-summary">
+      <div class="big-stars">★★★★★</div>
+      <div class="rating-text">5.0 · Consistently 5-star rated</div>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"I came home to an apartment that felt completely transformed. Every surface was spotless and it smelled incredible. I couldn't believe the difference!"</p>
+        <div class="review-author">— Barbara</div>
+        <div class="review-location">Santa Maria, CA</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Our move-out clean was handled so professionally. The place looked absolutely brand new when they were finished — truly impressive work."</p>
+        <div class="review-author">— Aubrey</div>
+        <div class="review-location">Morro Bay, CA</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Honestly didn't think our college apartment could be saved, but Coastal Sparkle proved me wrong. It looked move-in ready when they were done."</p>
+        <div class="review-author">— Jack</div>
+        <div class="review-location">San Luis Obispo, CA</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="book-cta">
+    <p class="section-label">Ready to Experience It?</p>
+    <h2 class="section-title">Book Your Clean Today</h2>
+    <a href="https://calendly.com/centralcoast-csc" target="_blank" class="booking-btn">✨ Book Now</a>
+  </div>
+
+  <footer>
+    <div class="footer-brand">Coastal Sparkle</div>
+    <p class="footer-tagline">"A clean home isn't just about how it looks — it's about how it makes you feel." 🧡</p>
+    <div class="footer-links">
+      <a href="index.html">Home</a><a href="services.html">Services</a>
+      <a href="reviews.html">Reviews</a><a href="contact.html">Contact</a>
+    </div>
+    <p class="footer-license">Coastal Sparkle Cleaning Service · Licensed under Daisy Made Revisions Inc. · Central Coast, California</p>
+  </footer>
+</body>
+</html>

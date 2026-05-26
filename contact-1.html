@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact – Coastal Sparkle</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--navy:#1a2744;--orange:#e07b2a;--peach:#f2b8a0;--blush:#f5d6cc;--lavender:#e8e4f0;--sage:#a8b89a;--cream:#fdf8f5;--soft-white:#fefcfa;}
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:'Jost',sans-serif;background:var(--soft-white);color:var(--navy);}
+    nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(253,248,245,0.95);backdrop-filter:blur(10px);padding:14px 32px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(240,210,195,0.4);}
+    .nav-brand{font-family:'Great Vibes',cursive;font-size:1.8rem;color:var(--navy);text-decoration:none;}
+    .nav-links{display:flex;gap:20px;list-style:none;align-items:center;}
+    .nav-links a{text-decoration:none;font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--navy);opacity:0.7;transition:all 0.2s;}
+    .nav-links a:hover,.nav-links a.active{opacity:1;color:var(--orange);}
+    .nav-book{background:var(--navy);color:white!important;opacity:1!important;padding:9px 22px;border-radius:50px;font-size:0.78rem!important;}
+    .nav-book:hover{background:var(--orange)!important;}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+    .hamburger span{display:block;width:24px;height:2px;background:var(--navy);border-radius:2px;}
+    .mobile-menu{display:none;position:fixed;top:58px;left:0;right:0;z-index:99;background:rgba(253,248,245,0.98);backdrop-filter:blur(10px);padding:20px 32px;flex-direction:column;gap:0;border-bottom:1px solid rgba(240,210,195,0.4);}
+    .mobile-menu.open{display:flex;}
+    .mobile-menu a{text-decoration:none;font-size:0.9rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--navy);opacity:0.8;padding:14px 0;border-bottom:1px solid rgba(240,210,195,0.3);}
+    .mobile-menu a:last-child{border-bottom:none;}
+    .mobile-book{background:var(--orange);color:white!important;opacity:1!important;text-align:center;border-radius:50px;padding:14px 28px!important;margin-top:12px;}
+    @media(max-width:700px){.nav-links{display:none;}.hamburger{display:flex;}}
+
+    .page-hero{padding:140px 24px 60px;background:linear-gradient(160deg,var(--lavender) 0%,var(--blush) 60%,var(--cream) 100%);text-align:center;}
+    .page-label{font-size:0.72rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--orange);margin-bottom:12px;}
+    .page-title{font-family:'Great Vibes',cursive;font-size:clamp(3rem,7vw,5rem);color:var(--navy);margin-bottom:14px;}
+    .page-desc{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--navy);opacity:0.72;max-width:520px;margin:0 auto;line-height:1.75;}
+
+    .contact-section{padding:80px 24px;background:white;}
+    .contact-inner{max-width:700px;margin:0 auto;}
+
+    .contact-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px;margin-bottom:48px;}
+    .contact-card{background:var(--cream);border-radius:20px;padding:28px 24px;text-align:center;border:1px solid rgba(240,200,185,0.4);transition:transform 0.2s,box-shadow 0.2s;}
+    .contact-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(26,39,68,0.08);}
+    .contact-card a{text-decoration:none;color:inherit;}
+    .cc-icon{font-size:1.8rem;margin-bottom:10px;}
+    .cc-label{font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--navy);opacity:0.5;margin-bottom:8px;}
+    .cc-value{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;color:var(--navy);}
+
+    .book-highlight{background:var(--navy);border-radius:24px;padding:48px 36px;text-align:center;color:white;margin-bottom:48px;}
+    .book-highlight h2{font-family:'Great Vibes',cursive;font-size:2.8rem;color:var(--peach);margin-bottom:12px;}
+    .book-highlight p{font-family:'Cormorant Garamond',serif;font-size:1.1rem;opacity:0.75;margin-bottom:28px;line-height:1.6;}
+    .booking-btn{display:inline-block;background:var(--orange);color:white;text-decoration:none;font-size:0.85rem;letter-spacing:0.15em;text-transform:uppercase;padding:18px 52px;border-radius:50px;transition:all 0.3s;box-shadow:0 6px 24px rgba(224,123,42,0.4);}
+    .booking-btn:hover{background:var(--peach);color:var(--navy);transform:translateY(-3px);}
+
+    .faq-section{padding:80px 24px;background:var(--cream);}
+    .section-label{font-size:0.72rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--orange);text-align:center;margin-bottom:12px;}
+    .section-title{font-family:'Great Vibes',cursive;font-size:clamp(2.5rem,5vw,3.8rem);color:var(--navy);text-align:center;margin-bottom:40px;}
+    .faq-list{max-width:680px;margin:0 auto;display:flex;flex-direction:column;gap:12px;}
+    .faq-item{border:1px solid rgba(240,200,185,0.4);border-radius:16px;overflow:hidden;background:white;}
+    .faq-q{display:flex;justify-content:space-between;align-items:center;padding:20px 24px;cursor:pointer;font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--navy);background:white;transition:background 0.2s;}
+    .faq-q:hover{background:var(--cream);}
+    .faq-icon{font-size:1.3rem;color:var(--orange);transition:transform 0.3s;}
+    .faq-a{display:none;padding:0 24px 20px;font-size:0.9rem;line-height:1.7;color:var(--navy);opacity:0.72;}
+    .faq-item.open .faq-a{display:block;}
+    .faq-item.open .faq-icon{transform:rotate(45deg);}
+
+    .area-section{padding:80px 24px;background:white;text-align:center;}
+    .area-tags{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:700px;margin:0 auto;}
+    .area-tag{background:var(--cream);border:1px solid rgba(240,200,185,0.5);border-radius:50px;padding:10px 22px;font-size:0.85rem;color:var(--navy);display:flex;align-items:center;gap:7px;transition:all 0.2s;}
+    .area-tag:hover{background:var(--blush);transform:translateY(-2px);}
+
+    footer{background:var(--navy);color:white;text-align:center;padding:40px 24px;}
+    .footer-brand{font-family:'Great Vibes',cursive;font-size:2.5rem;color:var(--peach);margin-bottom:10px;}
+    .footer-tagline{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;opacity:0.6;margin-bottom:16px;}
+    .footer-links{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-bottom:16px;}
+    .footer-links a{color:white;opacity:0.5;text-decoration:none;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;transition:opacity 0.2s;}
+    .footer-links a:hover{opacity:1;}
+    .footer-license{font-size:0.73rem;letter-spacing:0.08em;opacity:0.35;}
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="nav-brand">Coastal Sparkle</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      
+      <li><a href="reviews.html">Reviews</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+      <li><a href="https://calendly.com/centralcoast-csc" target="_blank" class="nav-book">Book Now ✨</a></li>
+    </ul>
+    <button class="hamburger" onclick="document.getElementById('mob').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mob">
+    <a href="index.html" onclick="document.getElementById('mob').classList.remove('open')">Home</a>
+    <a href="services.html" onclick="document.getElementById('mob').classList.remove('open')">Services</a>
+    
+    <a href="reviews.html" onclick="document.getElementById('mob').classList.remove('open')">Reviews</a>
+    <a href="contact.html" onclick="document.getElementById('mob').classList.remove('open')">Contact</a>
+    <a href="https://calendly.com/centralcoast-csc" target="_blank" class="mobile-book">Book Now ✨</a>
+  </div>
+
+  <div class="page-hero">
+    <p class="page-label">Get In Touch</p>
+    <h1 class="page-title">Contact Us</h1>
+    <p class="page-desc">Ready for a sparkling home? We'd love to hear from you!</p>
+  </div>
+
+  <section class="contact-section">
+    <div class="contact-inner">
+      <div class="contact-cards">
+        <div class="contact-card">
+          <a href="tel:8055307868">
+            <div class="cc-icon">📞</div>
+            <div class="cc-label">Call or Text</div>
+            <div class="cc-value">(805) 530-7868</div>
+          </a>
+        </div>
+        <div class="contact-card">
+          <a href="mailto:centralcoast.csc@gmail.com">
+            <div class="cc-icon">📧</div>
+            <div class="cc-label">Email Us</div>
+            <div class="cc-value">centralcoast.csc@gmail.com</div>
+          </a>
+        </div>
+        <div class="contact-card">
+          <div class="cc-icon">📍</div>
+          <div class="cc-label">Service Area</div>
+          <div class="cc-value">Central Coast, CA</div>
+        </div>
+      </div>
+
+      <div class="book-highlight">
+        <h2>Ready to Book?</h2>
+        <p>Schedule your cleaning online in just a few clicks — pick a date and time that works for you!</p>
+        <a href="https://calendly.com/centralcoast-csc" target="_blank" class="booking-btn">✨ Book Your Cleaning Now</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq-section">
+    <p class="section-label">Got Questions?</p>
+    <h2 class="section-title">FAQ</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Do I need to be home? <span class="faq-icon">+</span></div>
+        <div class="faq-a">Nope! Many clients provide a key or entry code. We'll take great care of your home whether you're there or not.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Do you bring your own supplies? <span class="faq-icon">+</span></div>
+        <div class="faq-a">Yes! We bring everything needed. If you have a preference for specific products, just let us know in advance.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What areas do you serve? <span class="faq-icon">+</span></div>
+        <div class="faq-a">We serve the Central Coast of California including San Luis Obispo, Santa Barbara, Santa Maria, Paso Robles, Pismo Beach, Morro Bay, Arroyo Grande, and surrounding areas.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How do I book? <span class="faq-icon">+</span></div>
+        <div class="faq-a">Easy! Click the "Book Now" button to schedule through Calendly, or call/text us directly at (805) 530-7868.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How much do you charge? <span class="faq-icon">+</span></div>
+        <div class="faq-a">Pricing depends on the type and size of your home. Check out our Services page for detailed pricing, or reach out for a custom quote!</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="area-section">
+    <p class="section-label">Where We Clean</p>
+    <h2 class="section-title" style="margin-bottom:36px;">Service Area</h2>
+    <div class="area-tags">
+      <div class="area-tag">📍 San Luis Obispo</div>
+      <div class="area-tag">📍 Santa Barbara</div>
+      <div class="area-tag">📍 Santa Maria</div>
+      <div class="area-tag">📍 Paso Robles</div>
+      <div class="area-tag">📍 Pismo Beach</div>
+      <div class="area-tag">📍 Morro Bay</div>
+      <div class="area-tag">📍 Arroyo Grande</div>
+      <div class="area-tag">📍 Lompoc</div>
+      <div class="area-tag">📍 Grover Beach</div>
+      <div class="area-tag">📍 Nipomo</div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-brand">Coastal Sparkle</div>
+    <p class="footer-tagline">"A clean home isn't just about how it looks — it's about how it makes you feel." 🧡</p>
+    <div class="footer-links">
+      <a href="index.html">Home</a><a href="services.html">Services</a>
+      <a href="reviews.html">Reviews</a><a href="contact.html">Contact</a>
+    </div>
+    <p class="footer-license">Coastal Sparkle Cleaning Service · Licensed under Daisy Made Revisions Inc. · Central Coast, California</p>
+  </footer>
+</body>
+</html>
