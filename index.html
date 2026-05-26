@@ -34,17 +34,17 @@
     @keyframes floatButterfly1{0%{transform:translate(0,0) rotate(-5deg)}25%{transform:translate(60px,-70px) rotate(10deg)}50%{transform:translate(40px,-30px) rotate(-8deg)}75%{transform:translate(-40px,-80px) rotate(12deg)}100%{transform:translate(0,0) rotate(-5deg)}}
     @keyframes floatButterfly2{0%{transform:translate(0,0) rotate(5deg)}33%{transform:translate(-50px,-60px) rotate(-12deg)}66%{transform:translate(30px,-75px) rotate(8deg)}100%{transform:translate(0,0) rotate(5deg)}}
     @keyframes floatButterfly3{0%{transform:translate(0,0) rotate(-8deg)}50%{transform:translate(55px,-50px) rotate(15deg)}100%{transform:translate(0,0) rotate(-8deg)}}
-    @keyframes floatRealistic{0%{transform:translate(0,0) rotate(-3deg) scaleX(1)}25%{transform:translate(80px,-90px) rotate(8deg) scaleX(1)}50%{transform:translate(50px,-50px) rotate(-5deg) scaleX(-1)}75%{transform:translate(-60px,-85px) rotate(10deg) scaleX(-1)}100%{transform:translate(0,0) rotate(-3deg) scaleX(1)}}
+    @keyframes floatMonarch{0%{transform:translate(0,0) rotate(-3deg)}25%{transform:translate(100px,-100px) rotate(8deg)}50%{transform:translate(60px,-40px) rotate(-5deg)}75%{transform:translate(-70px,-90px) rotate(10deg)}100%{transform:translate(0,0) rotate(-3deg)}}
 
-    /* Butterfly positioning */
+    /* Butterfly emojis */
     .butterfly{position:absolute;pointer-events:none;font-size:2rem;opacity:0;}
     .b1{top:15%;left:8%;font-size:2.2rem;animation:riseUp 1s ease 0.4s forwards,floatButterfly1 14s ease-in-out 1.4s infinite;}
     .b2{top:20%;right:10%;font-size:1.6rem;animation:riseUp 1s ease 0.5s forwards,floatButterfly2 11s ease-in-out 1.5s infinite;}
     .b3{top:55%;left:5%;font-size:1.4rem;animation:riseUp 1s ease 0.6s forwards,floatButterfly3 10s ease-in-out 1.6s infinite;}
     .b4{top:38%;right:6%;font-size:1.5rem;animation:riseUp 1s ease 0.55s forwards,floatButterfly2 12s ease-in-out 1.55s infinite;}
 
-    /* Realistic butterfly image */
-    .realistic-butterfly{position:absolute;pointer-events:none;width:70px;height:auto;opacity:0;top:25%;left:12%;animation:riseUp 1.2s ease 0.8s forwards,floatRealistic 16s ease-in-out 2s infinite;z-index:1;}
+    /* Realistic butterfly GIF */
+    .realistic-butterfly{position:absolute;pointer-events:none;width:80px;height:auto;opacity:0;top:20%;left:10%;animation:riseUp 1.2s ease 0.8s forwards,floatMonarch 18s ease-in-out 2s infinite;z-index:1;}
     .realistic-butterfly img{width:100%;height:auto;display:block;}
 
     /* Sparkles */
@@ -67,13 +67,56 @@
     .meet-label{opacity:0;animation:riseUp 0.9s ease 0.9s forwards;margin-bottom:16px;}
     .meet-label p{font-size:0.78rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--orange);}
 
-    /* About Card - REBUILT */
-    .about-card{opacity:0;animation:riseUp 0.9s ease 1s forwards;background:white;border-radius:28px;box-shadow:0 16px 48px rgba(26,39,68,0.12);border:1px solid rgba(240,200,185,0.4);overflow:hidden;width:100%;max-width:580px;margin:0 auto;}
-    .about-card-inner{padding:28px 24px 24px;display:flex;flex-direction:column;align-items:center;gap:20px;}
-    .about-photo-wrap{width:180px;height:220px;border-radius:16px;overflow:hidden;box-shadow:0 8px 24px rgba(26,39,68,0.12);flex-shrink:0;}
-    .about-photo-wrap img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;}
-    .about-info{text-align:center;width:100%;}
-    .about-badge{display:inline-block;background:var(--cream);border-radius:50px;padding:10px 20px;font-size:0.75rem;letter-spacing:0.08em;color:var(--navy);border:1px solid rgba(240,200,185,0.6);white-space:nowrap;}
+    /* About Card - FULLY REBUILT so photo shows completely and text is readable */
+    .about-card{
+      opacity:0;
+      animation:riseUp 0.9s ease 1s forwards;
+      background:white;
+      border-radius:28px;
+      box-shadow:0 16px 48px rgba(26,39,68,0.12);
+      border:1px solid rgba(240,200,185,0.4);
+      width:100%;
+      max-width:400px;
+      margin:0 auto;
+    }
+    .about-card-inner{
+      padding:32px 28px 28px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:18px;
+      text-align:center;
+    }
+    .about-photo-wrap{
+      width:100%;
+      max-width:260px;
+      border-radius:16px;
+      overflow:hidden;
+      box-shadow:0 8px 24px rgba(26,39,68,0.15);
+    }
+    .about-photo-wrap img{
+      width:100%;
+      height:auto;
+      display:block;
+    }
+    .about-name{
+      font-family:'Cormorant Garamond',serif;
+      font-size:1.4rem;
+      font-style:italic;
+      color:var(--navy);
+      margin:0;
+    }
+    .about-badge{
+      display:inline-block;
+      background:var(--cream);
+      border-radius:50px;
+      padding:10px 20px;
+      font-size:0.75rem;
+      letter-spacing:0.06em;
+      color:var(--navy);
+      border:1px solid rgba(240,200,185,0.6);
+      line-height:1.5;
+    }
 
     /* Trust Bar */
     .trust-bar{background:var(--navy);color:white;display:flex;justify-content:center;gap:32px;padding:18px 24px;flex-wrap:wrap;}
@@ -120,9 +163,9 @@
     <div class="butterfly b3">🦋</div>
     <div class="butterfly b4">🦋</div>
 
-    <!-- Realistic butterfly image -->
+    <!-- Realistic monarch butterfly GIF -->
     <div class="realistic-butterfly">
-      <img src="butterfly-realistic.png" alt="butterfly" onerror="this.style.display='none'"/>
+      <img src="butterfly-realistic.gif" alt="monarch butterfly" onerror="this.style.display='none'"/>
     </div>
 
     <!-- Sparkles -->
@@ -134,7 +177,7 @@
     <div class="hero-content">
       <p class="hero-eyebrow">Central Coast California ✦ Licensed & Trusted</p>
       
-      <!-- Logo image -->
+      <!-- Logo -->
       <img src="coastal-sparkle-logo.png" alt="Coastal Sparkle Logo" class="hero-logo"/>
       
       <p class="hero-tagline">Sparkling clean, every time —<br/>brought to your home with heart.</p>
@@ -146,17 +189,14 @@
       
       <div class="meet-label"><p>Meet The Owner ✨</p></div>
       
-      <!-- About Card - FIXED LAYOUT -->
+      <!-- About Card - FULLY VISIBLE PHOTO + READABLE TEXT -->
       <div class="about-card">
         <div class="about-card-inner">
-          <!-- Photo on top -->
           <div class="about-photo-wrap">
             <img src="victoria-photo-2.webp" alt="Victoria - Coastal Sparkle Cleaning"/>
           </div>
-          <!-- License badge below photo -->
-          <div class="about-info">
-            <div class="about-badge">✓ Licensed under Daisy Made Revisions Inc.</div>
-          </div>
+          <p class="about-name">Victoria</p>
+          <div class="about-badge">✓ Licensed under Daisy Made Revisions Inc.</div>
         </div>
       </div>
     </div>
@@ -195,5 +235,3 @@
   </script>
 </body>
 </html>
-
-On Mon, May 25, 2026, 11:43 PM V. T. <labickey123@gmail.com> wrote:
