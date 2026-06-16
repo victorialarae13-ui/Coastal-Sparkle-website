@@ -2,191 +2,455 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contact – Coastal Sparkle</title>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
-  <style>
-    :root{--navy:#1a2744;--orange:#e07b2a;--peach:#f2b8a0;--blush:#f5d6cc;--lavender:#e8e4f0;--sage:#a8b89a;--cream:#fdf8f5;--soft-white:#fefcfa;}
-    *{margin:0;padding:0;box-sizing:border-box;}
-    body{font-family:'Jost',sans-serif;background:var(--soft-white);color:var(--navy);}
-    nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(253,248,245,0.95);backdrop-filter:blur(10px);padding:14px 32px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(240,210,195,0.4);}
-    .nav-brand{font-family:'Great Vibes',cursive;font-size:1.8rem;color:var(--navy);text-decoration:none;}
-    .nav-links{display:flex;gap:20px;list-style:none;align-items:center;}
-    .nav-links a{text-decoration:none;font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--navy);opacity:0.7;transition:all 0.2s;}
-    .nav-links a:hover,.nav-links a.active{opacity:1;color:var(--orange);}
-    .nav-book{background:var(--navy);color:white!important;opacity:1!important;padding:9px 22px;border-radius:50px;font-size:0.78rem!important;}
-    .nav-book:hover{background:var(--orange)!important;}
-    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
-    .hamburger span{display:block;width:24px;height:2px;background:var(--navy);border-radius:2px;}
-    .mobile-menu{display:none;position:fixed;top:58px;left:0;right:0;z-index:99;background:rgba(253,248,245,0.98);backdrop-filter:blur(10px);padding:20px 32px;flex-direction:column;gap:0;border-bottom:1px solid rgba(240,210,195,0.4);}
-    .mobile-menu.open{display:flex;}
-    .mobile-menu a{text-decoration:none;font-size:0.9rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--navy);opacity:0.8;padding:14px 0;border-bottom:1px solid rgba(240,210,195,0.3);}
-    .mobile-menu a:last-child{border-bottom:none;}
-    .mobile-book{background:var(--orange);color:white!important;opacity:1!important;text-align:center;border-radius:50px;padding:14px 28px!important;margin-top:12px;}
-    @media(max-width:700px){.nav-links{display:none;}.hamburger{display:flex;}}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Cleaning - Coastal Sparkle</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cormorant Garamond', serif;
+        }
 
-    .page-hero{padding:140px 24px 60px;background:linear-gradient(160deg,var(--lavender) 0%,var(--blush) 60%,var(--cream) 100%);text-align:center;}
-    .page-label{font-size:0.72rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--orange);margin-bottom:12px;}
-    .page-title{font-family:'Great Vibes',cursive;font-size:clamp(3rem,7vw,5rem);color:var(--navy);margin-bottom:14px;}
-    .page-desc{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--navy);opacity:0.72;max-width:520px;margin:0 auto;line-height:1.75;}
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f5ede0 0%, #fef9f3 100%);
+            padding: 40px 20px;
+        }
 
-    .contact-section{padding:80px 24px;background:white;}
-    .contact-inner{max-width:700px;margin:0 auto;}
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
 
-    .contact-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px;margin-bottom:48px;}
-    .contact-card{background:var(--cream);border-radius:20px;padding:28px 24px;text-align:center;border:1px solid rgba(240,200,185,0.4);transition:transform 0.2s,box-shadow 0.2s;}
-    .contact-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(26,39,68,0.08);}
-    .contact-card a{text-decoration:none;color:inherit;}
-    .cc-icon{font-size:1.8rem;margin-bottom:10px;}
-    .cc-label{font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--navy);opacity:0.5;margin-bottom:8px;}
-    .cc-value{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;color:var(--navy);}
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
 
-    .book-highlight{background:var(--navy);border-radius:24px;padding:48px 36px;text-align:center;color:white;margin-bottom:48px;}
-    .book-highlight h2{font-family:'Great Vibes',cursive;font-size:2.8rem;color:var(--peach);margin-bottom:12px;}
-    .book-highlight p{font-family:'Cormorant Garamond',serif;font-size:1.1rem;opacity:0.75;margin-bottom:28px;line-height:1.6;}
-    .booking-btn{display:inline-block;background:var(--orange);color:white;text-decoration:none;font-size:0.85rem;letter-spacing:0.15em;text-transform:uppercase;padding:18px 52px;border-radius:50px;transition:all 0.3s;box-shadow:0 6px 24px rgba(224,123,42,0.4);}
-    .booking-btn:hover{background:var(--peach);color:var(--navy);transform:translateY(-3px);}
+        .header h1 {
+            font-size: 48px;
+            font-weight: 700;
+            color: #062b5b;
+            margin-bottom: 8px;
+            font-family: 'Great Vibes', cursive;
+            letter-spacing: 2px;
+        }
 
-    .faq-section{padding:80px 24px;background:var(--cream);}
-    .section-label{font-size:0.72rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--orange);text-align:center;margin-bottom:12px;}
-    .section-title{font-family:'Great Vibes',cursive;font-size:clamp(2.5rem,5vw,3.8rem);color:var(--navy);text-align:center;margin-bottom:40px;}
-    .faq-list{max-width:680px;margin:0 auto;display:flex;flex-direction:column;gap:12px;}
-    .faq-item{border:1px solid rgba(240,200,185,0.4);border-radius:16px;overflow:hidden;background:white;}
-    .faq-q{display:flex;justify-content:space-between;align-items:center;padding:20px 24px;cursor:pointer;font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--navy);background:white;transition:background 0.2s;}
-    .faq-q:hover{background:var(--cream);}
-    .faq-icon{font-size:1.3rem;color:var(--orange);transition:transform 0.3s;}
-    .faq-a{display:none;padding:0 24px 20px;font-size:0.9rem;line-height:1.7;color:var(--navy);opacity:0.72;}
-    .faq-item.open .faq-a{display:block;}
-    .faq-item.open .faq-icon{transform:rotate(45deg);}
+        .header p {
+            font-size: 18px;
+            color: #c4936f;
+            letter-spacing: 1px;
+        }
 
-    .area-section{padding:80px 24px;background:white;text-align:center;}
-    .area-tags{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:700px;margin:0 auto;}
-    .area-tag{background:var(--cream);border:1px solid rgba(240,200,185,0.5);border-radius:50px;padding:10px 22px;font-size:0.85rem;color:var(--navy);display:flex;align-items:center;gap:7px;transition:all 0.2s;}
-    .area-tag:hover{background:var(--blush);transform:translateY(-2px);}
+        .form-container {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(6, 43, 91, 0.08);
+            margin-bottom: 40px;
+            display: none;
+        }
 
-    footer{background:var(--navy);color:white;text-align:center;padding:40px 24px;}
-    .footer-brand{font-family:'Great Vibes',cursive;font-size:2.5rem;color:var(--peach);margin-bottom:10px;}
-    .footer-tagline{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;opacity:0.6;margin-bottom:16px;}
-    .footer-links{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-bottom:16px;}
-    .footer-links a{color:white;opacity:0.5;text-decoration:none;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;transition:opacity 0.2s;}
-    .footer-links a:hover{opacity:1;}
-    .footer-license{font-size:0.73rem;letter-spacing:0.08em;opacity:0.35;}
-  </style>
+        .form-container.active {
+            display: block;
+        }
+
+        .confirmation {
+            background: white;
+            padding: 60px 40px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(6, 43, 91, 0.08);
+            display: none;
+        }
+
+        .confirmation.active {
+            display: block;
+        }
+
+        .checkmark {
+            font-size: 60px;
+            color: #c4936f;
+            margin-bottom: 20px;
+        }
+
+        .confirmation h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #062b5b;
+            margin-bottom: 16px;
+        }
+
+        .confirmation p {
+            font-size: 16px;
+            color: #666;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .form-row div {
+            flex: 1;
+        }
+
+        label {
+            display: block;
+            font-size: 16px;
+            font-weight: 600;
+            color: #062b5b;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px 14px;
+            font-size: 15px;
+            border: 2px solid #f0e6d8;
+            border-radius: 8px;
+            font-family: 'Cormorant Garamond', serif;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #c4936f;
+            background-color: #fefaf5;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+
+        input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: #c4936f;
+        }
+
+        .checkbox-group label {
+            margin: 0;
+            font-weight: 400;
+            font-size: 15px;
+        }
+
+        button {
+            width: 100%;
+            padding: 16px;
+            font-size: 18px;
+            font-weight: 600;
+            color: white;
+            background: linear-gradient(135deg, #062b5b 0%, #1a4d7f 100%);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(6, 43, 91, 0.2);
+        }
+
+        button:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .bookings-section {
+            margin-top: 40px;
+        }
+
+        .bookings-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #062b5b;
+            margin-bottom: 20px;
+        }
+
+        .booking-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(6, 43, 91, 0.06);
+            border-left: 4px solid #c4936f;
+            margin-bottom: 16px;
+        }
+
+        .booking-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .booking-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: #062b5b;
+            margin: 0;
+        }
+
+        .service-tag {
+            background: #f5ede0;
+            color: #c4936f;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: capitalize;
+        }
+
+        .booking-detail {
+            font-size: 14px;
+            color: #666;
+            margin: 6px 0;
+            line-height: 1.5;
+        }
+
+        .error-message {
+            color: #d32f2f;
+            font-size: 14px;
+            margin-top: 4px;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+    </style>
 </head>
 <body>
-  <nav>
-    <a href="index.html" class="nav-brand">Coastal Sparkle</a>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="services.html">Services</a></li>
-      
-      <li><a href="reviews.html">Reviews</a></li>
-      <li><a href="contact.html" class="active">Contact</a></li>
-      <li><a href="https://calendly.com/centralcoast-csc" target="_blank" class="nav-book">Book Now ✨</a></li>
-    </ul>
-    <button class="hamburger" onclick="document.getElementById('mob').classList.toggle('open')" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
-  <div class="mobile-menu" id="mob">
-    <a href="index.html" onclick="document.getElementById('mob').classList.remove('open')">Home</a>
-    <a href="services.html" onclick="document.getElementById('mob').classList.remove('open')">Services</a>
-    
-    <a href="reviews.html" onclick="document.getElementById('mob').classList.remove('open')">Reviews</a>
-    <a href="contact.html" onclick="document.getElementById('mob').classList.remove('open')">Contact</a>
-    <a href="https://calendly.com/centralcoast-csc" target="_blank" class="mobile-book">Book Now ✨</a>
-  </div>
-
-  <div class="page-hero">
-    <p class="page-label">Get In Touch</p>
-    <h1 class="page-title">Contact Us</h1>
-    <p class="page-desc">Ready for a sparkling home? We'd love to hear from you!</p>
-  </div>
-
-  <section class="contact-section">
-    <div class="contact-inner">
-      <div class="contact-cards">
-        <div class="contact-card">
-          <a href="tel:8055307868">
-            <div class="cc-icon">📞</div>
-            <div class="cc-label">Call or Text</div>
-            <div class="cc-value">(805) 530-7868</div>
-          </a>
+    <div class="container">
+        <div class="header">
+            <h1>✨ Book Your Cleaning</h1>
+            <p>Coastal Sparkle Cleaning Service</p>
         </div>
-        <div class="contact-card">
-          <a href="mailto:centralcoast.csc@gmail.com">
-            <div class="cc-icon">📧</div>
-            <div class="cc-label">Email Us</div>
-            <div class="cc-value">centralcoast.csc@gmail.com</div>
-          </a>
+
+        <!-- Form -->
+        <div class="form-container active" id="formContainer">
+            <form id="bookingForm">
+                <!-- Name -->
+                <div class="form-group">
+                    <label for="fullName">Full Name *</label>
+                    <input type="text" id="fullName" name="fullName" placeholder="Your full name" required>
+                    <div class="error-message" id="nameError">Please enter your name</div>
+                </div>
+
+                <!-- Phone -->
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567" required>
+                    <div class="error-message" id="phoneError">Please enter your phone number</div>
+                </div>
+
+                <!-- Email -->
+                <div class="form-group">
+                    <label for="email">Email (Optional)</label>
+                    <input type="email" id="email" name="email" placeholder="your@email.com">
+                </div>
+
+                <!-- Service Type -->
+                <div class="form-group">
+                    <label for="serviceType">Service Type *</label>
+                    <select id="serviceType" name="serviceType" required>
+                        <option value="standard-cleaning">Standard Cleaning</option>
+                        <option value="deep-cleaning">Deep Cleaning</option>
+                        <option value="move-out">Move-Out Cleaning</option>
+                        <option value="move-in">Move-In Cleaning</option>
+                        <option value="post-event">Post-Event Cleaning</option>
+                    </select>
+                </div>
+
+                <!-- Address -->
+                <div class="form-group">
+                    <label for="address">Service Address *</label>
+                    <input type="text" id="address" name="address" placeholder="123 Main St, Your City, CA" required>
+                    <div class="error-message" id="addressError">Please enter the service address</div>
+                </div>
+
+                <!-- Space Size -->
+                <div class="form-group">
+                    <label for="spaceSize">Space Size</label>
+                    <select id="spaceSize" name="spaceSize">
+                        <option value="small">Small (Studio/1BR)</option>
+                        <option value="medium" selected>Medium (2-3BR)</option>
+                        <option value="large">Large (4+ BR)</option>
+                        <option value="commercial">Commercial</option>
+                    </select>
+                </div>
+
+                <!-- Date & Time -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="date">Preferred Date *</label>
+                        <input type="date" id="date" name="date" required>
+                        <div class="error-message" id="dateError">Please select a date</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="time">Preferred Time *</label>
+                        <input type="time" id="time" name="time" required>
+                        <div class="error-message" id="timeError">Please select a time</div>
+                    </div>
+                </div>
+
+                <!-- Recurring -->
+                <div class="checkbox-group">
+                    <input type="checkbox" id="recurring" name="recurring">
+                    <label for="recurring">I'd like regular, recurring cleanings</label>
+                </div>
+
+                <!-- Notes -->
+                <div class="form-group">
+                    <label for="notes">Special Requests or Notes</label>
+                    <textarea id="notes" name="notes" placeholder="Any allergies, pet info, specific areas to focus on..."></textarea>
+                </div>
+
+                <button type="submit" id="submitBtn">Book Now</button>
+            </form>
         </div>
-        <div class="contact-card">
-          <div class="cc-icon">📍</div>
-          <div class="cc-label">Service Area</div>
-          <div class="cc-value">Central Coast, CA</div>
+
+        <!-- Confirmation -->
+        <div class="confirmation" id="confirmationContainer">
+            <div class="checkmark">✓</div>
+            <h2>Booking Confirmed!</h2>
+            <p id="confirmMessage">Thanks! We'll be in touch to confirm your appointment.</p>
         </div>
-      </div>
 
-      <div class="book-highlight">
-        <h2>Ready to Book?</h2>
-        <p>Schedule your cleaning online in just a few clicks — pick a date and time that works for you!</p>
-        <a href="https://calendly.com/centralcoast-csc" target="_blank" class="booking-btn">✨ Book Your Cleaning Now</a>
-      </div>
+        <!-- Bookings List -->
+        <div class="bookings-section" id="bookingsSection" style="display: none;">
+            <h3 class="bookings-title">📋 Recent Bookings</h3>
+            <div id="bookingsList"></div>
+        </div>
     </div>
-  </section>
 
-  <section class="faq-section">
-    <p class="section-label">Got Questions?</p>
-    <h2 class="section-title">FAQ</h2>
-    <div class="faq-list">
-      <div class="faq-item">
-        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Do I need to be home? <span class="faq-icon">+</span></div>
-        <div class="faq-a">Nope! Many clients provide a key or entry code. We'll take great care of your home whether you're there or not.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Do you bring your own supplies? <span class="faq-icon">+</span></div>
-        <div class="faq-a">Yes! We bring everything needed. If you have a preference for specific products, just let us know in advance.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What areas do you serve? <span class="faq-icon">+</span></div>
-        <div class="faq-a">We serve the Central Coast of California including San Luis Obispo, Santa Barbara, Santa Maria, Paso Robles, Pismo Beach, Morro Bay, Arroyo Grande, and surrounding areas.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How do I book? <span class="faq-icon">+</span></div>
-        <div class="faq-a">Easy! Click the "Book Now" button to schedule through Calendly, or call/text us directly at (805) 530-7868.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How much do you charge? <span class="faq-icon">+</span></div>
-        <div class="faq-a">Pricing depends on the type and size of your home. Check out our Services page for detailed pricing, or reach out for a custom quote!</div>
-      </div>
-    </div>
-  </section>
+    <script>
+        const form = document.getElementById('bookingForm');
+        const formContainer = document.getElementById('formContainer');
+        const confirmationContainer = document.getElementById('confirmationContainer');
+        const bookingsSection = document.getElementById('bookingsSection');
+        const bookingsList = document.getElementById('bookingsList');
+        const submitBtn = document.getElementById('submitBtn');
+        let bookings = [];
 
-  <section class="area-section">
-    <p class="section-label">Where We Clean</p>
-    <h2 class="section-title" style="margin-bottom:36px;">Service Area</h2>
-    <div class="area-tags">
-      <div class="area-tag">📍 San Luis Obispo</div>
-      <div class="area-tag">📍 Santa Barbara</div>
-      <div class="area-tag">📍 Santa Maria</div>
-      <div class="area-tag">📍 Paso Robles</div>
-      <div class="area-tag">📍 Pismo Beach</div>
-      <div class="area-tag">📍 Morro Bay</div>
-      <div class="area-tag">📍 Arroyo Grande</div>
-      <div class="area-tag">📍 Lompoc</div>
-      <div class="area-tag">📍 Grover Beach</div>
-      <div class="area-tag">📍 Nipomo</div>
-    </div>
-  </section>
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
 
-  <footer>
-    <div class="footer-brand">Coastal Sparkle</div>
-    <p class="footer-tagline">"A clean home isn't just about how it looks — it's about how it makes you feel." 🧡</p>
-    <div class="footer-links">
-      <a href="index.html">Home</a><a href="services.html">Services</a>
-      <a href="reviews.html">Reviews</a><a href="contact.html">Contact</a>
-    </div>
-    <p class="footer-license">Coastal Sparkle Cleaning Service · Licensed under Daisy Made Revisions Inc. · Central Coast, California</p>
-  </footer>
+            // Get form data
+            const formData = new FormData(form);
+            const data = {
+                fullName: formData.get('fullName'),
+                phone: formData.get('phone'),
+                email: formData.get('email'),
+                serviceType: formData.get('serviceType'),
+                address: formData.get('address'),
+                spaceSize: formData.get('spaceSize'),
+                date: formData.get('date'),
+                time: formData.get('time'),
+                recurring: formData.get('recurring') ? 'Yes' : 'No',
+                notes: formData.get('notes')
+            };
+
+            // Validate required fields
+            if (!data.fullName || !data.phone || !data.address || !data.date || !data.time) {
+                alert('Please fill in all required fields');
+                return;
+            }
+
+            // Disable button while submitting
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Booking...';
+
+            try {
+                // Submit to Formspree
+                const response = await fetch('https://formspree.io/f/xnjyjzgg', {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json'
+                    },
+                    body: formData
+                });
+
+                if (response.ok) {
+                    // Add to bookings list
+                    bookings.unshift({ ...data, id: Date.now() });
+                    updateBookingsList();
+
+                    // Show confirmation
+                    document.getElementById('confirmMessage').textContent = 
+                        `Thanks ${data.fullName}! We'll be in touch at ${data.phone} to confirm your appointment.`;
+                    
+                    formContainer.classList.remove('active');
+                    confirmationContainer.classList.add('active');
+
+                    // Reset form after 3 seconds
+                    setTimeout(() => {
+                        form.reset();
+                        formContainer.classList.add('active');
+                        confirmationContainer.classList.remove('active');
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Book Now';
+                    }, 3000);
+                } else {
+                    alert('There was an error submitting your booking. Please try again.');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Book Now';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('There was an error. Please try again.');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Book Now';
+            }
+        });
+
+        function updateBookingsList() {
+            if (bookings.length === 0) {
+                bookingsSection.style.display = 'none';
+                return;
+            }
+
+            bookingsSection.style.display = 'block';
+            bookingsList.innerHTML = bookings.map(booking => `
+                <div class="booking-card">
+                    <div class="booking-header">
+                        <h4 class="booking-name">${booking.fullName}</h4>
+                        <span class="service-tag">${booking.serviceType.replace('-', ' ')}</span>
+                    </div>
+                    <p class="booking-detail">📅 ${booking.date} at ${booking.time}</p>
+                    <p class="booking-detail">📍 ${booking.address}</p>
+                    <p class="booking-detail">📞 ${booking.phone}</p>
+                    ${booking.email ? `<p class="booking-detail">✉️ ${booking.email}</p>` : ''}
+                    ${booking.notes ? `<p class="booking-detail">📝 ${booking.notes}</p>` : ''}
+                </div>
+            `).join('');
+        }
+    </script>
 </body>
 </html>
+
